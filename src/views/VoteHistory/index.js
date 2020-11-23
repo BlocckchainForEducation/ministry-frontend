@@ -1,7 +1,8 @@
 import { Box, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import VoteBody from "../../shared/VoteBody";
 import View from "../../utils/View";
-import VotingRequest from "../Voting/VoteRequest";
+import VotedHeader from "./VotedHeader";
 
 export default function VoteHistory(props) {
   const [state, setState] = useState({
@@ -27,14 +28,15 @@ export default function VoteHistory(props) {
   if (state.votedRequests.length > 0) {
     content = state.votedRequests.map((voted, index) => (
       <Box mb={3}>
-        <VotingRequest request={voted} key={index}></VotingRequest>
+        <VotedHeader request={voted}></VotedHeader>
+        <VoteBody request={voted}></VoteBody>
       </Box>
     ));
   } else {
     content = (
       <Box py={2} mb={3} bgcolor="white">
         <Typography variant="h4" align="center">
-          Không có lịch sử vote nào!
+          Chưa có lịch sử bỏ phiếu nào!
         </Typography>
       </Box>
     );
@@ -42,7 +44,7 @@ export default function VoteHistory(props) {
 
   return (
     <div>
-      <View title="Lịch sử vote">{state.loading ? "loading" : content}</View>
+      <View title="Lịch sử vote">{state.loading ? null : content}</View>
     </div>
   );
 }
