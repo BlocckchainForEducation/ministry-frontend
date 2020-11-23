@@ -1,14 +1,15 @@
 import { Box, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import VoteBody from "../../shared/VoteBody";
 import View from "../../utils/View";
+import { setFetchedVoted } from "./redux";
 import VotedHeader from "./VotedHeader";
 
 export default function VoteHistory(props) {
-  const [state, setState] = useState({
-    loading: true,
-    votedRequests: [],
-  });
+  const loading = useSelector((state) => state.votedHistorySlice.fetching);
+  const voteds = useSelector((state) => state.votedHistorySlice.voted);
+  const dp = useDispatch();
 
   useEffect(() => {
     fetchVoteHistory();
@@ -18,15 +19,15 @@ export default function VoteHistory(props) {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=old`);
     if (response.ok) {
       const voted = await response.json();
-      setState({ loading: false, votedRequests: voted });
+      dp(setFetchedVoted(voted));
     } else {
       console.log(await response.json());
     }
   }
 
   let content;
-  if (state.votedRequests.length > 0) {
-    content = state.votedRequests.map((voted, index) => (
+  if (voteds.length > 0) {
+    content = voteds.map((voted, index) => (
       <Box mb={3}>
         <VotedHeader request={voted}></VotedHeader>
         <VoteBody request={voted}></VoteBody>
@@ -44,7 +45,7 @@ export default function VoteHistory(props) {
 
   return (
     <div>
-      <View title="Lịch sử vote">{state.loading ? null : content}</View>
+      <View title="Lịch sử vote">{loading ? null : content}</View>
     </div>
   );
 }
