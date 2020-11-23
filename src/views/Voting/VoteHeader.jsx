@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Grid, Typography } from "@material-ui/core";
+import { Avatar, Box, Button, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { changeVoteState } from "./redux";
 
@@ -23,7 +23,7 @@ export default function VoteHeader({ request }) {
     <div>
       <Box bgcolor="white" px={2} py={1} display="flex" alignItems="center">
         <Box flexGrow={1} display="flex" alignItems="center">
-          <Avatar component="span"></Avatar>
+          <Avatar></Avatar>
           <Box mx={2}>
             <Typography variant="h5">{request.universityName}</Typography>
           </Box>

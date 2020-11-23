@@ -1,4 +1,4 @@
-import VoteBody from "../../components/VoteBody";
+import VoteBody from "src/shared/VoteBody";
 import VoteHeader from "./VoteHeader";
 
 export default function VoteRequest({ request }) {

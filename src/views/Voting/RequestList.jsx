@@ -34,11 +34,11 @@ export default function RequestList(props) {
     content = (
       <Box py={2} mb={3} bgcolor="white">
         <Typography variant="h4" align="center">
-          Chưa có yêu cầu vote mới nào!
+          Chưa có yêu cầu bỏ phiếu mới nào!
         </Typography>
       </Box>
     );
   }
 
-  return <div>{loading ? "loading" : content}</div>;
+  return <div>{loading ? null : content}</div>;
 }
