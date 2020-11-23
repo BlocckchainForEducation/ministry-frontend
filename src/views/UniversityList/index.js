@@ -1,5 +1,5 @@
 import { Box, Container } from "@material-ui/core";
-import View from "../../components/utils/View";
+import View from "../../utils/View";
 import UniversityTable from "./UniversityTable";
 
 export default function index(props) {

@@ -17,14 +17,14 @@ const user = {
 
 const items = [
   {
-    href: "/bgd/vote",
+    href: "/bgd/bo-phieu",
     icon: HowToVoteIcon,
-    title: "Voting",
+    title: "Bỏ phiếu",
   },
   {
-    href: "/bgd/lich-su-vote",
+    href: "/bgd/lich-su-bo-phieu",
     icon: HistoryIcon,
-    title: "Lịch sử vote",
+    title: "Lịch sử bỏ phiếu",
   },
   {
     href: "/bgd/ds-tdh",

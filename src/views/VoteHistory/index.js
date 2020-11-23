@@ -1,6 +1,6 @@
 import { Box, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import View from "../../components/utils/View";
+import View from "../../utils/View";
 import VotingRequest from "../Voting/VoteRequest";
 
 export default function VoteHistory(props) {

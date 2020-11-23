@@ -1,4 +1,4 @@
-import View from "../../components/utils/View";
+import View from "../../utils/View";
 import RequestList from "./RequestList";
 
 export default function index(props) {
