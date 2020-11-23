@@ -6,7 +6,7 @@ export default function UniversityTable({ universities }) {
     <div>
       <Box pt={2}>
         <Typography variant="h3" align="center">
-          Danh sách Trường Đại học tham gia hệ thống
+          Danh sách Trường Đại học đã tham gia hệ thống
         </Typography>
       </Box>
       <TableContainer>
