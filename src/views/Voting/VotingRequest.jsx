@@ -25,14 +25,22 @@ export default function VotingRequest({ request }) {
             <Typography variant="h5">{request.universityName}</Typography>
           </Box>
         </Box>
-        <Box px={2}>
-          <Button variant="contained" color="primary">
-            Đồng ý
-          </Button>
-        </Box>
-        <Box>
-          <Button>Từ chối</Button>
-        </Box>
+        {request.state === "new" ? (
+          <>
+            <Box px={2}>
+              <Button variant="contained" color="primary">
+                Đồng ý
+              </Button>
+            </Box>
+            <Box>
+              <Button>Từ chối</Button>
+            </Box>
+          </>
+        ) : request.state === "accepted" ? (
+          "Đã đồng ý"
+        ) : (
+          "Đã từ chối"
+        )}
       </Box>
       <TableContainer component={Paper}>
         <Table className={classes.table} size="small">

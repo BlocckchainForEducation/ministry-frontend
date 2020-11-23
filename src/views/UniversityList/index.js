@@ -6,7 +6,9 @@ export default function index(props) {
   return (
     <div>
       <View title="Danh sách TĐH">
-        <UniversityTable></UniversityTable>
+        <Box bgcolor="white">
+          <UniversityTable></UniversityTable>
+        </Box>
       </View>
     </div>
   );

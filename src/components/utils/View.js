@@ -6,9 +6,7 @@ export default function View({ children, title }) {
     <div>
       <Page title={title}>
         <Container>
-          <Box py={3}>
-            <Box bgcolor="white">{children}</Box>
-          </Box>
+          <Box py={3}>{children}</Box>
         </Container>
       </Page>
     </div>

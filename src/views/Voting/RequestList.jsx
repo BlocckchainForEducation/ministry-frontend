@@ -1,53 +1,36 @@
 import { Box } from "@material-ui/core";
+import { useEffect, useState } from "react";
 import VotingRequest from "./VotingRequest";
 
-const requests = [
-  {
-    id: 22,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-  {
-    id: 22,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-  {
-    id: 23,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-  {
-    id: 24,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-];
-
 export default function RequestList(props) {
+  const [state, setState] = useState({
+    loading: true,
+    requests: null,
+  });
+
+  async function fetchNewVoteRequests() {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=new`);
+    if (response.ok) {
+      const voteRequests = await response.json();
+      setState({ loading: false, requests: voteRequests });
+    } else {
+      console.log(await response.json());
+    }
+  }
+
+  useEffect(() => {
+    fetchNewVoteRequests();
+  }, []);
+
   return (
     <div>
-      {requests.map((request, index) => (
-        <Box mb={3}>
-          <VotingRequest request={request} key={index}></VotingRequest>
-        </Box>
-      ))}
+      {state.loading
+        ? "loading"
+        : state.requests.map((request, index) => (
+            <Box mb={3}>
+              <VotingRequest request={request} key={index}></VotingRequest>
+            </Box>
+          ))}
     </div>
   );
 }
