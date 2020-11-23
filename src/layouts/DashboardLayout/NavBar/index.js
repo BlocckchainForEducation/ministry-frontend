@@ -4,6 +4,7 @@ import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import HowToVoteIcon from "@material-ui/icons/HowToVote";
 import SearchIcon from "@material-ui/icons/Search";
 import PropTypes from "prop-types";
+import HistoryIcon from "@material-ui/icons/History";
 import React, { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import NavItem from "./NavItem";
@@ -16,8 +17,13 @@ const user = {
 
 const items = [
   {
-    href: "/bgd/voting",
+    href: "/bgd/vote",
     icon: HowToVoteIcon,
+    title: "Voting",
+  },
+  {
+    href: "/bgd/lich-su-vote",
+    icon: HistoryIcon,
     title: "Voting",
   },
   {
