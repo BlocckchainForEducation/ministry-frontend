@@ -1,13 +1,5 @@
-import React from 'react';
-
 const Logo = (props) => {
-  return (
-    <img
-      alt="Logo"
-      src="/static/logo.svg"
-      {...props}
-    />
-  );
+  return <img width="42px" height="42px" alt="Logo" src="/static/images/react192.png" {...props} />;
 };
 
 export default Logo;

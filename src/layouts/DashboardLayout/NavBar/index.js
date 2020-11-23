@@ -1,65 +1,39 @@
+import { Avatar, Box, Divider, Drawer, Hidden, List, makeStyles, Typography } from "@material-ui/core";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
+import HowToVoteIcon from "@material-ui/icons/HowToVote";
+import SearchIcon from "@material-ui/icons/Search";
+import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
-import { Avatar, Box, Divider, Drawer, Hidden, List, Typography, makeStyles } from "@material-ui/core";
-import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon,
-} from "react-feather";
 import NavItem from "./NavItem";
 
 const user = {
-  avatar: "/static/images/avatars/avatar_6.png",
-  jobTitle: "Senior Developer",
-  name: "Katarina Smith",
+  avatar: "/static/images/ministry.png",
+  jobTitle: "Bộ Giáo dục và Đào tạo",
+  name: "Bộ trưởng",
 };
 
 const items = [
   {
-    href: "/app/dashboard",
-    icon: BarChartIcon,
-    title: "Dashboard",
+    href: "/bgd/voting",
+    icon: HowToVoteIcon,
+    title: "Voting",
   },
   {
-    href: "/app/customers",
-    icon: UsersIcon,
-    title: "Customers",
+    href: "/bgd/ds-tdh",
+    icon: FormatListBulletedIcon,
+    title: "Danh sách TĐH",
   },
   {
-    href: "/app/products",
-    icon: ShoppingBagIcon,
-    title: "Products",
+    href: "/bgd/thong-ke",
+    icon: EqualizerIcon,
+    title: "Thống kê",
   },
   {
-    href: "/app/account",
-    icon: UserIcon,
-    title: "Account",
-  },
-  {
-    href: "/app/settings",
-    icon: SettingsIcon,
-    title: "Settings",
-  },
-  {
-    href: "/login",
-    icon: LockIcon,
-    title: "Login",
-  },
-  {
-    href: "/register",
-    icon: UserPlusIcon,
-    title: "Register",
-  },
-  {
-    href: "/404",
-    icon: AlertCircleIcon,
-    title: "Error",
+    href: "/bgd/tra-cuc",
+    icon: SearchIcon,
+    title: "Tra cứu",
   },
 ];
 
@@ -93,7 +67,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar className={classes.avatar} component={RouterLink} src={user.avatar} to="/app/account" />
+        <Avatar className={classes.avatar} component={RouterLink} src={user.avatar} to="/bgd/account" />
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
