@@ -23,7 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 debug.log
-# :octocat: init commit
 # :sparkles: new: handle request page
 # :heavy_plus_sign: add: VotingRequest
 # :construction: working: handle request page
