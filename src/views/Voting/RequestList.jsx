@@ -34,7 +34,7 @@ export default function RequestList(props) {
     content = (
       <Box py={2} mb={3} bgcolor="white">
         <Typography variant="h4" align="center">
-          Chưa có yêu cầu bỏ phiếu mới nào!
+          Chưa có thêm yêu cầu bỏ phiếu mới nào!
         </Typography>
       </Box>
     );
