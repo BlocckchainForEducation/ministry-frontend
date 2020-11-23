@@ -25,21 +25,19 @@ export default function RequestList(props) {
 
   let content;
   if (newVoteRequests.length > 0) {
-    let voteList = newVoteRequests.map((request, index) => (
+    content = newVoteRequests.map((request, index) => (
       <Box mb={3}>
         <VotingRequest request={request} key={index}></VotingRequest>
       </Box>
     ));
-    content = voteList;
   } else {
-    const placeHolder = (
+    content = (
       <Box py={2} mb={3} bgcolor="white">
         <Typography variant="h4" align="center">
           Chưa có yêu cầu vote mới nào!
         </Typography>
       </Box>
     );
-    content = placeHolder;
   }
 
   return <div>{loading ? "loading" : content}</div>;
