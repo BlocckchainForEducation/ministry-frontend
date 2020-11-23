@@ -1,54 +1,7 @@
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core";
+import { Avatar, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core";
+import { AvatarGroup } from "@material-ui/lab";
 
-const universities = [
-  {
-    id: 21,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-  {
-    id: 22,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-  {
-    id: 23,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-  {
-    id: 24,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-  {
-    id: 25,
-    universityName: "Truong Dai Hoc Bach Khoa Ha Noi",
-    nameInEnglish: "HUST",
-    address: "So 1, Dai Co viet",
-    phone: "01234567",
-    email: "bkhn@husst.edu.vn",
-    pubkey: "1234zfasdfa9zvzdfk2",
-  },
-];
-
-export default function UniversityTable(props) {
+export default function UniversityTable({ universities }) {
   return (
     <div>
       <Box pt={2}>
@@ -66,6 +19,7 @@ export default function UniversityTable(props) {
               <TableCell>SĐT</TableCell>
               <TableCell>Địa chỉ</TableCell>
               <TableCell>Ngày tham gia</TableCell>
+              <TableCell>Chấp nhận bởi</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -77,6 +31,16 @@ export default function UniversityTable(props) {
                 <TableCell>{uni.phone}</TableCell>
                 <TableCell>{uni.address}</TableCell>
                 <TableCell>{"1/1/2020"}</TableCell>
+                <TableCell>
+                  <AvatarGroup max={5}>
+                    <Avatar></Avatar>
+                    <Avatar></Avatar>
+                    <Avatar></Avatar>
+                    <Avatar></Avatar>
+                    <Avatar></Avatar>
+                    <Avatar></Avatar>
+                  </AvatarGroup>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
