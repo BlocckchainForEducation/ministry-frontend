@@ -11,7 +11,8 @@ const routes = [
     path: "bgd",
     element: <DashboardLayout />,
     children: [
-      { path: "voting", element: <Voting /> },
+      { path: "vote", element: <Voting /> },
+      { path: "lich-su-vote", element: <Voting /> },
       { path: "ds-tdh", element: <UniversityList /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
