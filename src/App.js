@@ -4,6 +4,8 @@ import { ThemeProvider } from "@material-ui/core";
 import GlobalStyles from "src/components/utils/GlobalStyles";
 import theme from "src/theme";
 import routes from "src/routes";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App = () => {
   const routing = useRoutes(routes);
@@ -11,7 +13,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      {routing}
+      <Provider store={store}>{routing}</Provider>
     </ThemeProvider>
   );
 };
