@@ -5,6 +5,7 @@ import MainLayout from "src/layouts/MainLayout";
 import NotFoundView from "src/views/errors/NotFoundView";
 import Voting from "src/views/Voting";
 import UniversityList from "src/views/UniversityList";
+import VoteHistory from "src/views/VoteHistory";
 
 const routes = [
   {
@@ -12,7 +13,7 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: "vote", element: <Voting /> },
-      { path: "lich-su-vote", element: <Voting /> },
+      { path: "lich-su-vote", element: <VoteHistory /> },
       { path: "ds-tdh", element: <UniversityList /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],

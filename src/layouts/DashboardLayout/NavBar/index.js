@@ -24,7 +24,7 @@ const items = [
   {
     href: "/bgd/lich-su-vote",
     icon: HistoryIcon,
-    title: "Voting",
+    title: "Lịch sử vote",
   },
   {
     href: "/bgd/ds-tdh",
