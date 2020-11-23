@@ -67,7 +67,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar className={classes.avatar} component={RouterLink} src={user.avatar} to="/bgd/account" />
+        <Avatar className={classes.avatar} component={RouterLink} src={user.avatar} to="/" />
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>

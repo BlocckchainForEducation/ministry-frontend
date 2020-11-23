@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core";
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core";
 
 const universities = [
   {
@@ -51,9 +51,11 @@ const universities = [
 export default function UniversityTable(props) {
   return (
     <div>
-      <Typography variant="h4" align="center">
-        Danh sách Trường Đại học tham gia hệ thống
-      </Typography>
+      <Box pt={2}>
+        <Typography variant="h3" align="center">
+          Danh sách Trường Đại học tham gia hệ thống
+        </Typography>
+      </Box>
       <TableContainer>
         <Table>
           <TableHead>

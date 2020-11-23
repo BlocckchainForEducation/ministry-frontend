@@ -1,16 +1,13 @@
 import { Box, Container } from "@material-ui/core";
+import View from "../../components/utils/View";
 import UniversityTable from "./UniversityTable";
 
 export default function index(props) {
   return (
     <div>
-      <Container>
-        <Box py={2}>
-          <Box bgcolor="white">
-            <UniversityTable></UniversityTable>
-          </Box>
-        </Box>
-      </Container>
+      <View title="Danh sách TĐH">
+        <UniversityTable></UniversityTable>
+      </View>
     </div>
   );
 }
