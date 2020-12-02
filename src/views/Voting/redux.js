@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const votingViewSlice = createSlice({
-  name: "votingViewSlice",
-  initialState: { fetchingNewVoteRequests: true, newVoteRequests: [] },
+const votingSlice = createSlice({
+  name: "votingSlice",
+  initialState: { fetching: true, voteRequests: [] },
   reducers: {
-    setNewVoteRequests: (state, action) => {
-      state.fetchingNewVoteRequests = false;
-      state.newVoteRequests = action.payload;
+    updateVoteRequestList: (state, action) => {
+      state.fetching = false;
+      state.voteRequests = action.payload;
     },
-    changeVoteState: (state, action) => {
-      state.newVoteRequests = state.newVoteRequests.filter((vote) => vote._id !== action.payload._id);
+    removeVotedRequest: (state, action) => {
+      state.voteRequests = state.voteRequests.filter((vote) => vote._id !== action.payload._id);
     },
   },
 });
 
-export default votingViewSlice.reducer;
-export const { setNewVoteRequests, changeVoteState } = votingViewSlice.actions;
+export default votingSlice.reducer;
+export const { updateVoteRequestList, removeVotedRequest } = votingSlice.actions;

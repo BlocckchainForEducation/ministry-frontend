@@ -1,18 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const votedHistorySlice = createSlice({
-  name: "votedHistorySlice",
-  initialState: { fetching: true, voted: [] },
+const voteHistorySlice = createSlice({
+  name: "voteHistorySlice",
+  initialState: { fetching: true, voteHistory: [] },
   reducers: {
-    setFetchedVoted: (state, action) => {
+    updateVoteHistory: (state, action) => {
       state.fetching = false;
-      const fetchedVoted = action.payload;
-      if (fetchedVoted.length > state.voted.length) {
-        state.voted = fetchedVoted;
-      }
+      state.voteHistory = action.payload;
     },
   },
 });
 
-export default votedHistorySlice.reducer;
-export const { setFetchedVoted } = votedHistorySlice.actions;
+export default voteHistorySlice.reducer;
+export const { updateVoteHistory } = voteHistorySlice.actions;

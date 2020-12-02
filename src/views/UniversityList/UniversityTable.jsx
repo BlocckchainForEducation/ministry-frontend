@@ -24,7 +24,7 @@ export default function UniversityTable({ universities }) {
           </TableHead>
           <TableBody>
             {universities.map((uni, index) => (
-              <TableRow>
+              <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{uni.universityName}</TableCell>
                 <TableCell>{uni.email}</TableCell>

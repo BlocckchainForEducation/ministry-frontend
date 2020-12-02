@@ -1,13 +1,15 @@
 import { Box, Typography } from "@material-ui/core";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewVoteRequests } from "./redux";
+import { updateVoteRequestList } from "./redux";
 import VotingRequest from "./VoteRequest";
 
 export default function RequestList(props) {
-  const loading = useSelector((state) => state.votingViewSlice.fetchingNewVoteRequests);
-  const newVoteRequests = useSelector((state) => state.votingViewSlice.newVoteRequests);
+  const loading = useSelector((state) => state.votingSlice.fetching);
+  const voteRequests = useSelector((state) => state.votingSlice.voteRequests);
   const dp = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     fetchNewVoteRequests();
@@ -15,18 +17,20 @@ export default function RequestList(props) {
 
   async function fetchNewVoteRequests() {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=new`);
-    if (response.ok) {
-      const newVoteRequests = await response.json();
-      dp(setNewVoteRequests(newVoteRequests));
+    if (!response.ok) {
+      enqueueSnackbar(JSON.stringify(await response.json()), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     } else {
-      console.log(await response.json());
+      const result = await response.json();
+      if (result.length > voteRequests) {
+        dp(updateVoteRequestList());
+      }
     }
   }
 
   let content;
-  if (newVoteRequests.length > 0) {
-    content = newVoteRequests.map((request, index) => (
-      <Box mb={3}>
+  if (voteRequests.length > 0) {
+    content = voteRequests.map((request, index) => (
+      <Box mb={3} key={index}>
         <VotingRequest request={request} key={index}></VotingRequest>
       </Box>
     ));

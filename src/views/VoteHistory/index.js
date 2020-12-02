@@ -1,15 +1,17 @@
 import { Box, Typography } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VoteBody from "../../shared/VoteBody";
 import View from "../../utils/View";
-import { setFetchedVoted } from "./redux";
+import { updateVoteHistory } from "./redux";
 import VotedHeader from "./VotedHeader";
 
 export default function VoteHistory(props) {
-  const loading = useSelector((state) => state.votedHistorySlice.fetching);
-  const voteds = useSelector((state) => state.votedHistorySlice.voted);
+  const loading = useSelector((state) => state.voteHistorySlice.fetching);
+  const voteHistory = useSelector((state) => state.voteHistorySlice.voteHistory);
   const dp = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     fetchVoteHistory();
@@ -17,19 +19,22 @@ export default function VoteHistory(props) {
 
   async function fetchVoteHistory() {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=old`);
-    if (response.ok) {
-      dp(setFetchedVoted(await response.json()));
+    if (!response.ok) {
+      enqueueSnackbar(JSON.stringify(await response.json()), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     } else {
-      console.log(await response.json());
+      const fetchedVoteHistory = await response.json();
+      if (fetchedVoteHistory.length > voteHistory.length) {
+        dp(updateVoteHistory());
+      }
     }
   }
 
   let content;
-  if (voteds.length > 0) {
-    content = voteds.map((voted, index) => (
-      <Box mb={3}>
-        <VotedHeader request={voted}></VotedHeader>
-        <VoteBody request={voted}></VoteBody>
+  if (voteHistory.length > 0) {
+    content = voteHistory.map((vote, index) => (
+      <Box mb={3} key={index}>
+        <VotedHeader request={vote}></VotedHeader>
+        <VoteBody request={vote}></VoteBody>
       </Box>
     ));
   } else {

@@ -1,21 +1,22 @@
 import { Avatar, Box, Button, Typography } from "@material-ui/core";
+import { useSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
-import { changeVoteState } from "./redux";
+import { removeVotedRequest } from "./redux";
 
 export default function VoteHeader({ request }) {
   const dp = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   async function sendVote(vote, _id) {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote?vote=${vote}&_id=${_id}`, {
       method: "POST",
     });
-    const body = await response.json();
-    if (response.ok) {
-      dp(changeVoteState({ _id: _id, state: vote === "accept" ? "accepted" : "declined" }));
-      alert("Đã vote thành công!");
-      // console.log(body);
+    const result = await response.json();
+    if (!response.ok) {
+      enqueueSnackbar(JSON.stringify(result), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     } else {
-      alert(JSON.stringify(body));
+      dp(removeVotedRequest({ _id: _id, state: vote === "accept" ? "accepted" : "declined" }));
+      enqueueSnackbar("Bỏ phiếu thành công!", { variant: "success", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     }
   }
 
