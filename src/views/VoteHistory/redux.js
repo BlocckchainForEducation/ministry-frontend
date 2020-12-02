@@ -7,7 +7,7 @@ const votedHistorySlice = createSlice({
     setFetchedVoted: (state, action) => {
       state.fetching = false;
       const fetchedVoted = action.payload;
-      if (fetchedVoted.length > state.voted) {
+      if (fetchedVoted.length > state.voted.length) {
         state.voted = fetchedVoted;
       }
     },

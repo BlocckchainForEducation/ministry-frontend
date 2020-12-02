@@ -18,8 +18,7 @@ export default function VoteHistory(props) {
   async function fetchVoteHistory() {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=old`);
     if (response.ok) {
-      const voted = await response.json();
-      dp(setFetchedVoted(voted));
+      dp(setFetchedVoted(await response.json()));
     } else {
       console.log(await response.json());
     }

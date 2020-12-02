@@ -13,7 +13,7 @@ export default function VoteHeader({ request }) {
     if (response.ok) {
       dp(changeVoteState({ _id: _id, state: vote === "accept" ? "accepted" : "declined" }));
       alert("Đã vote thành công!");
-      console.log(body);
+      // console.log(body);
     } else {
       alert(JSON.stringify(body));
     }

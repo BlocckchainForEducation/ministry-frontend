@@ -23,7 +23,7 @@ const routes = [
     element: <MainLayout />,
     children: [
       { path: "404", element: <NotFoundView /> },
-      { path: "/", element: <Navigate to="/bgd" /> },
+      { path: "/", element: <Navigate to="/bgd/bo-phieu" /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
