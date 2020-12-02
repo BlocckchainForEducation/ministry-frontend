@@ -8,6 +8,8 @@ import VoteRequest from "./VoteRequest";
 export default function RequestList(props) {
   const loading = useSelector((state) => state.votingSlice.fetching);
   const voteRequests = useSelector((state) => state.votingSlice.voteRequests);
+  const numOfNewVoteRequest = useSelector((state) => state.votingSlice.numOfNewVoteRequest);
+
   const dp = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -21,19 +23,13 @@ export default function RequestList(props) {
       enqueueSnackbar(JSON.stringify(await response.json()), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     } else {
       const result = await response.json();
-      if (loading || result.length > voteRequests.length) {
-        dp(updateVoteRequestList(result));
-      }
+      dp(updateVoteRequestList(result));
     }
   }
 
   let content;
-  if (voteRequests.length > 0) {
-    content = voteRequests.map((request, index) => (
-      <Box mb={3} key={index}>
-        <VoteRequest request={request}></VoteRequest>
-      </Box>
-    ));
+  if (numOfNewVoteRequest > 0) {
+    content = voteRequests.map((request, index) => <VoteRequest request={request} key={index}></VoteRequest>);
   } else {
     content = (
       <Box py={2} mb={3} bgcolor="white">
