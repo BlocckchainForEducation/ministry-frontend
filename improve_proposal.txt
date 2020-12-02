@@ -1,0 +1,4 @@
+1. change 404 when navigate thong-ke and tra-cuc to under development.
+2. Login, Logout
+3. Talk with wallet
+4. Find better app's logo img
