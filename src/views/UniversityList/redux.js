@@ -6,10 +6,7 @@ const universityListSlice = createSlice({
   reducers: {
     setFetchedUniversities: (state, action) => {
       state.fetching = false;
-      const fetchedUnis = action.payload;
-      if (fetchedUnis.length > state.universities) {
-        state.universities = fetchedUnis;
-      }
+      state.universities = action.payload;
     },
   },
 });

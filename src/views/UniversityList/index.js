@@ -16,11 +16,10 @@ export default function UniversityList(props) {
 
   async function fetchUniversity() {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/university/universities`);
-    if (response.ok) {
-      const unis = await response.json();
-      dp(setFetchedUniversities(unis));
-    } else {
+    if (!response.ok) {
       console.log(await response.json());
+    } else {
+      dp(setFetchedUniversities(await response.json()));
     }
   }
 
