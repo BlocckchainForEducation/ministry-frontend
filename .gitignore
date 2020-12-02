@@ -28,7 +28,7 @@ debug.log
 # :construction: working: handle request page
 # :pencil2: update navbar link 
 # :shirt: refactor: handle request page
-# :white_check_mark: done: handle request page
+# :white_check_mark: done/test: handle request page
 # :bug: bug: require pw twice
 # :bug: fixed: require pw twice
 # :zap: improve performance: handle request page

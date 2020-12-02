@@ -23,8 +23,8 @@ export default function VoteHistory(props) {
       enqueueSnackbar(JSON.stringify(await response.json()), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     } else {
       const fetchedVoteHistory = await response.json();
-      if (fetchedVoteHistory.length > voteHistory.length) {
-        dp(updateVoteHistory());
+      if (loading || fetchedVoteHistory.length > voteHistory.length) {
+        dp(updateVoteHistory(fetchedVoteHistory));
       }
     }
   }

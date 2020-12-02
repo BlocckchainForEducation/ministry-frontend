@@ -21,8 +21,8 @@ export default function RequestList(props) {
       enqueueSnackbar(JSON.stringify(await response.json()), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     } else {
       const result = await response.json();
-      if (result.length > voteRequests) {
-        dp(updateVoteRequestList());
+      if (loading || result.length > voteRequests.length) {
+        dp(updateVoteRequestList(result));
       }
     }
   }
@@ -31,7 +31,7 @@ export default function RequestList(props) {
   if (voteRequests.length > 0) {
     content = voteRequests.map((request, index) => (
       <Box mb={3} key={index}>
-        <VotingRequest request={request} key={index}></VotingRequest>
+        <VotingRequest request={request}></VotingRequest>
       </Box>
     ));
   } else {

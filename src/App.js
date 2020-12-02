@@ -14,8 +14,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Provider store={store}></Provider>
-      <SnackbarProvider maxSnack={1}>{routing}</SnackbarProvider>
+      <Provider store={store}>
+        <SnackbarProvider maxSnack={1}>{routing}</SnackbarProvider>
+      </Provider>
     </ThemeProvider>
   );
 };
