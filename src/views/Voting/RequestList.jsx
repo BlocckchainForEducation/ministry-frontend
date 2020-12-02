@@ -3,7 +3,7 @@ import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateVoteRequestList } from "./redux";
-import VotingRequest from "./VoteRequest";
+import VoteRequest from "./VoteRequest";
 
 export default function RequestList(props) {
   const loading = useSelector((state) => state.votingSlice.fetching);
@@ -31,7 +31,7 @@ export default function RequestList(props) {
   if (voteRequests.length > 0) {
     content = voteRequests.map((request, index) => (
       <Box mb={3} key={index}>
-        <VotingRequest request={request}></VotingRequest>
+        <VoteRequest request={request}></VoteRequest>
       </Box>
     ));
   } else {

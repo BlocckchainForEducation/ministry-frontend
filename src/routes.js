@@ -15,7 +15,7 @@ const routes = [
       { path: "bo-phieu", element: <Voting /> },
       { path: "lich-su-bo-phieu", element: <VoteHistory /> },
       { path: "ds-tdh", element: <UniversityList /> },
-      { path: "*", element: <Navigate to="/404" /> },
+      { path: "*", element: <Navigate to="/404" replace={true} /> },
     ],
   },
   {
