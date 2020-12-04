@@ -2,6 +2,7 @@ import { Box } from "@material-ui/core";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import View from "../../shared/utils/View";
+import { getToken } from "../../utils/mng-token";
 import { setFetchedUniversities } from "./redux";
 import UniversityTable from "./UniversityTable";
 
@@ -15,7 +16,9 @@ export default function UniversityList(props) {
   }, []);
 
   async function fetchUniversity() {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/university/universities`);
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/university/universities`, {
+      headers: { Authorization: getToken() },
+    });
     if (!response.ok) {
       console.log(await response.json());
     } else {

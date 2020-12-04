@@ -2,6 +2,7 @@ import { Box, Collapse } from "@material-ui/core";
 import { useSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
 import VoteBody from "src/shared/VoteBody";
+import { getToken } from "../../utils/mng-token";
 import { collapseVoteRequest } from "./redux";
 import VoteHeader from "./VoteHeader";
 
@@ -11,6 +12,7 @@ export default function VoteRequest({ request }) {
 
   async function sendVote(vote, _id) {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote?vote=${vote}&_id=${_id}`, {
+      headers: { Authorization: getToken() },
       method: "POST",
     });
     const result = await response.json();

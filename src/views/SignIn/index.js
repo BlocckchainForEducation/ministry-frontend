@@ -14,7 +14,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useState } from "react";
 import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom";
 import { setLocalRole, setSessionRole } from "src/utils/mng-role";
-import { setLocalToken, setSessionToken } from "src/utils/mng-token";
+import { getToken, setLocalToken, setSessionToken } from "src/utils/mng-token";
 // import { getRedirect } from "src/utils/role-redirect";
 
 function Copyright() {
@@ -70,7 +70,7 @@ export default function SignIn() {
     e.preventDefault();
     let response = await fetch(`${process.env.REACT_APP_SERVER_URL}/acc/signin`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", Authorization: getToken() },
       body: JSON.stringify({ email: state.email, password: state.password }),
     });
 

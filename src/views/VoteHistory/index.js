@@ -6,6 +6,7 @@ import VoteBody from "../../shared/VoteBody";
 import View from "../../shared/utils/View";
 import { updateVoteHistory } from "./redux";
 import VotedHeader from "./VotedHeader";
+import { getToken } from "../../utils/mng-token";
 
 export default function VoteHistory(props) {
   const loading = useSelector((state) => state.voteHistorySlice.fetching);
@@ -18,7 +19,9 @@ export default function VoteHistory(props) {
   }, []);
 
   async function fetchVoteHistory() {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=old`);
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=old`, {
+      headers: { Authorization: getToken() },
+    });
     if (!response.ok) {
       enqueueSnackbar(JSON.stringify(await response.json()), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     } else {
