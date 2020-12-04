@@ -1,7 +1,7 @@
 import { Box } from "@material-ui/core";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import View from "../../utils/View";
+import View from "../../shared/utils/View";
 import { setFetchedUniversities } from "./redux";
 import UniversityTable from "./UniversityTable";
 

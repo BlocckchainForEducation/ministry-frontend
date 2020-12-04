@@ -1,4 +1,4 @@
-import View from "../../utils/View";
+import View from "../../shared/utils/View";
 import RequestList from "./RequestList";
 
 export default function index(props) {

@@ -3,7 +3,7 @@ import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VoteBody from "../../shared/VoteBody";
-import View from "../../utils/View";
+import View from "../../shared/utils/View";
 import { updateVoteHistory } from "./redux";
 import VotedHeader from "./VotedHeader";
 

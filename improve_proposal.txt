@@ -2,3 +2,4 @@
 2. Login, Logout
 3. Talk with wallet
 4. Find better app's logo img
+5. add loading when send txs

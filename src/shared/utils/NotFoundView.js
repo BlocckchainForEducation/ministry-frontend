@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography, makeStyles } from "@material-ui/core";
-import Page from "src/utils/Page";
+import Page from "src/shared/utils/Page";
 import notFoundImg from "src/assets/images/undraw_page_not_found_su7k.svg";
 
 const useStyles = makeStyles((theme) => ({
