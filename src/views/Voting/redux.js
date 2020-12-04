@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const votingSlice = createSlice({
   name: "votingSlice",
-  initialState: { fetching: true, voteRequests: [], numOfNewVoteRequest: 0 },
+  initialState: { fetching: true, voteRequests: [], numOfNewVoteRequest: 0, privateKey: null },
   reducers: {
     updateVoteRequestList: (state, action) => {
       state.fetching = false;
@@ -14,12 +14,15 @@ const votingSlice = createSlice({
       state.voteRequests = state.voteRequests.filter((vote) => vote._id !== action.payload._id);
     },
     collapseVoteRequest(state, action) {
-      const vote = state.voteRequests.find((vote) => vote._id === action.payload._id);
-      vote.in = false;
+      const index = state.voteRequests.findIndex((vote) => vote.pubkey === action.payload.pubkey);
+      state.voteRequests[index].in = false;
       state.numOfNewVoteRequest -= 1;
+    },
+    setPrivateKey: (state, action) => {
+      state.privateKey = action.payload.privateKey;
     },
   },
 });
 
 export default votingSlice.reducer;
-export const { updateVoteRequestList, removeVotedRequest, collapseVoteRequest } = votingSlice.actions;
+export const { updateVoteRequestList, removeVotedRequest, collapseVoteRequest, setPrivateKey } = votingSlice.actions;
