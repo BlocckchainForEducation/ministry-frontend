@@ -12,16 +12,24 @@ export default function VotedHeader({ request }) {
         </Box>
       </Box>
       <Box>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item>{request.state === "accepted" ? <i>Đã chấp nhận</i> : <i>Đã từ chối</i>}</Grid>
-          <Grid item>
-            {request.state === "accepted" ? (
-              <CheckIcon style={{ color: theme.palette.success.dark }}></CheckIcon>
-            ) : (
-              <CloseIcon style={{ color: theme.palette.error.dark }}></CloseIcon>
-            )}
+        <Box>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item>{request.state === "accepted" ? <i>Đã đồng ý</i> : <i>Đã từ chối</i>}</Grid>
+            <Grid item>
+              {request.state === "accepted" ? (
+                <CheckIcon style={{ color: theme.palette.success.dark }}></CheckIcon>
+              ) : (
+                <CloseIcon style={{ color: theme.palette.error.dark }}></CloseIcon>
+              )}
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
+        <Box>
+          {/* <Typography variant="caption" style={{ fontStyle: "italic" }}>
+            {request.date}
+          </Typography> */}
+          <small> {request.date}</small>
+        </Box>
       </Box>
     </Box>
   );
