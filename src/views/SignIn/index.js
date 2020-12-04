@@ -142,10 +142,13 @@ export default function SignIn() {
             Đăng nhập
           </Button>
           <Grid container>
+            <Grid item xs></Grid>
             <Grid item xs>
-              <Link componet={RouterLink} to="#" variant="body2">
-                Quên mật khẩu?
-              </Link>
+              <Typography align="right">
+                <Link componet={RouterLink} to="#" variant="body2">
+                  Quên mật khẩu?
+                </Link>
+              </Typography>
             </Grid>
             {/* <Grid item>
               <Link component={RouterLink} to="/dang-ki">
@@ -155,7 +158,7 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
+      <Box mt={6}>
         <Copyright />
       </Box>
     </Container>
