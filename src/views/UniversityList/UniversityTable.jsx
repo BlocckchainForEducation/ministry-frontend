@@ -10,7 +10,7 @@ export default function UniversityTable({ universities }) {
         </Typography>
       </Box>
       <TableContainer>
-        <Table>
+        <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>#</TableCell>
