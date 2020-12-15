@@ -31,15 +31,12 @@ export default function UniversityTable({ universities }) {
                 <TableCell>{uni.phone}</TableCell>
                 <TableCell>{uni.address}</TableCell>
                 {/* TODO: we need add close_date: */}
-                <TableCell>{"1/1/2020"}</TableCell>
+                <TableCell>{uni.voteCloseDate}</TableCell>
                 <TableCell>
                   <AvatarGroup max={5}>
-                    <Avatar></Avatar>
-                    <Avatar></Avatar>
-                    <Avatar></Avatar>
-                    <Avatar></Avatar>
-                    <Avatar></Avatar>
-                    <Avatar></Avatar>
+                    {uni.votes.map((voter) => (
+                      <Avatar>{voter.publicKey}</Avatar>
+                    ))}
                   </AvatarGroup>
                 </TableCell>
               </TableRow>
