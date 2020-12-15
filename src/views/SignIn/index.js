@@ -12,10 +12,8 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useState } from "react";
-import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom";
-import { setLocalRole, setSessionRole } from "src/utils/mng-role";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { getToken, setLocalToken, setSessionToken } from "src/utils/mng-token";
-// import { getRedirect } from "src/utils/role-redirect";
 
 function Copyright() {
   return (
@@ -95,7 +93,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h3">
-          Đăng nhập tài khoản
+          Đăng nhập tài khoản Bộ Giáo Dục
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
