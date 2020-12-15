@@ -13,8 +13,11 @@ export default function VotedHeader({ request }) {
       </Box>
       <Box>
         <Box>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item>{request.state === "accepted" ? <i>Đồng ý</i> : <i>Từ chối</i>}</Grid>
+          <Grid container spacing={2} alignItems="center" justify="flex-end">
+            <Grid item>
+              <small>Ngày: {request.date}</small>
+            </Grid>
+            {/* <Grid item>{request.state === "accepted" ? <i>Đồng ý</i> : <i>Từ chối</i>}</Grid> */}
             <Grid item>
               {request.state === "accepted" ? (
                 <CheckIcon style={{ color: theme.palette.success.dark }}></CheckIcon>
@@ -25,7 +28,7 @@ export default function VotedHeader({ request }) {
           </Grid>
         </Box>
         <Box>
-          <small> {request.date}</small>
+          <small>{`Txid: ${request.txid}`}</small>
         </Box>
       </Box>
     </Box>
