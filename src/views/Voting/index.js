@@ -1,7 +1,7 @@
 import View from "../../shared/utils/View";
 import RequestList from "./RequestList";
 
-export default function index(props) {
+export default function Voting(props) {
   return (
     <div>
       <View title="Voting">
