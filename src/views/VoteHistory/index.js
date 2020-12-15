@@ -19,7 +19,7 @@ export default function VoteHistory(props) {
   }, []);
 
   async function fetchVoteHistory() {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/voting/vote-requests?state=old`, {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/vote-requests?state=old`, {
       headers: { Authorization: getToken() },
     });
     if (!response.ok) {
