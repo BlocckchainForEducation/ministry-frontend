@@ -7,7 +7,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
 import Logo from "src/shared/utils/Logo";
-import { clearRole } from "../../utils/mng-role";
 import { clearToken } from "../../utils/mng-token";
 import { useDispatch } from "react-redux";
 import { resetStore } from "../../store";
@@ -42,7 +41,6 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
           <IconButton
             color="inherit"
             onClick={(e) => {
-              clearRole();
               clearToken();
               dp(resetStore());
               navigate("/");
