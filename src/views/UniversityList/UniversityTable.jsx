@@ -30,6 +30,7 @@ export default function UniversityTable({ universities }) {
                 <TableCell>{uni.email}</TableCell>
                 <TableCell>{uni.phone}</TableCell>
                 <TableCell>{uni.address}</TableCell>
+                {/* TODO: we need add close_date: */}
                 <TableCell>{"1/1/2020"}</TableCell>
                 <TableCell>
                   <AvatarGroup max={5}>
