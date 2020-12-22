@@ -1,4 +1,4 @@
-import { Avatar, Box, Grid, Typography, useTheme } from "@material-ui/core";
+import { Avatar, Box, Grid, Link, Typography, useTheme } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 export default function VotedHeader({ request }) {
@@ -28,7 +28,9 @@ export default function VotedHeader({ request }) {
           </Grid>
         </Box>
         <Box>
-          <small>{`Txid: ${request.txid}`}</small>
+          <Link href={`${process.env.REACT_APP_EXPLORER_URL}/#/transactions/${request.txid}`}>
+            <small>{`Txid: ${request.txid.slice(0, 30)}...`}</small>
+          </Link>
         </Box>
       </Box>
     </Box>
