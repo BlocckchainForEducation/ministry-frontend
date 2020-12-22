@@ -18,6 +18,23 @@ export default function RequestList(props) {
     fetchNewVoteRequests();
   }, []);
 
+  useEffect(() => {
+    if (numOfNewVoteRequest === 0) {
+      const clockId = setInterval(async () => {
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/vote-requests?state=new`, { headers: { Authorization: getToken() } });
+        if (res.ok) {
+          const body = await res.json();
+          if (body) {
+            dp(updateVoteRequestList(body));
+          }
+        }
+      }, 5000);
+      return () => {
+        window.clearInterval(clockId);
+      };
+    }
+  });
+
   async function fetchNewVoteRequests() {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/vote-requests?state=new`, {
       headers: { Authorization: getToken() },
