@@ -1,14 +1,4 @@
-POST http://localhost:8000/acc/signup HTTP/1.1
-content-type: application/json
-
-{
-  "email": "bogiaoduc@gmail.com",
-  "password": "12341234",
-  "repassword": "12341234"
-}
-
-
-# POST http://139.59.125.235:8000/acc/signup HTTP/1.1
+# POST http://localhost:8000/acc/signup HTTP/1.1
 # content-type: application/json
 
 # {
@@ -16,3 +6,13 @@ content-type: application/json
 #   "password": "12341234",
 #   "repassword": "12341234"
 # }
+
+
+POST http://139.59.125.235:8000/acc/signup HTTP/1.1
+content-type: application/json
+
+{
+  "email": "bogiaoduc@gmail.com",
+  "password": "12341234",
+  "repassword": "12341234"
+}
