@@ -4,7 +4,7 @@ import RequestList from "./RequestList";
 export default function Voting(props) {
   return (
     <div>
-      <View title="Voting">
+      <View title="Bỏ phiếu">
         <RequestList></RequestList>
       </View>
     </div>

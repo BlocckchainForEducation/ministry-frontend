@@ -8,6 +8,8 @@ import UniversityList from "src/views/UniversityList";
 import VoteHistory from "src/views/VoteHistory";
 import SignInView from "src/views/SignIn";
 import { getToken } from "./utils/mng-token";
+import Statistic from "./views/Statistic";
+import Lookup from "./views/Lookup";
 
 const routes = [
   {
@@ -17,6 +19,8 @@ const routes = [
       { path: "bo-phieu", element: <Voting /> },
       { path: "lich-su-bo-phieu", element: <VoteHistory /> },
       { path: "ds-tdh", element: <UniversityList /> },
+      { path: "thong-ke", element: <Statistic /> },
+      { path: "tra-cuu", element: <Lookup /> },
       { path: "*", element: <Navigate to="/404" replace={true} /> },
     ],
   },

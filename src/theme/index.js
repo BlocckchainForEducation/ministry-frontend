@@ -1,4 +1,5 @@
 import { createMuiTheme, colors } from "@material-ui/core";
+import { blue, pink } from "@material-ui/core/colors";
 import shadows from "./shadows";
 import typography from "./typography";
 
@@ -9,6 +10,9 @@ const theme = createMuiTheme({
       default: colors.common.white,
       paper: colors.common.white,
     },
+    primary: blue,
+    secondary: pink,
+
     // primary: {
     //   main: colors.indigo[500]
     // },

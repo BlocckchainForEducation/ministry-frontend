@@ -37,7 +37,7 @@ const items = [
     title: "Thống kê",
   },
   {
-    href: "/bgd/tra-cuc",
+    href: "/bgd/tra-cuu",
     icon: SearchIcon,
     title: "Tra cứu",
   },

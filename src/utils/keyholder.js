@@ -4,9 +4,9 @@ export function setPrivateKeyHex(privateKeyHexParam) {
   privateKeyHex = privateKeyHexParam;
 }
 
-export function getPrivateKeyHex() {
-  return privateKeyHex;
-}
+// export function getPrivateKeyHex() {
+//   return privateKeyHex;
+// }
 
 export async function requirePrivateKeyHex(enqueueSnackbar) {
   if (!privateKeyHex) {
