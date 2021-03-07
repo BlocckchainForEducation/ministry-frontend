@@ -10,7 +10,7 @@ const votingSlice = createSlice({
       state.numOfNewVoteRequest = action.payload.length;
     },
     collapseVoteRequest(state, action) {
-      const index = state.voteRequests.findIndex((vote) => vote.pubkey === action.payload.pubkey);
+      const index = state.voteRequests.findIndex((vote) => vote.publicKey === action.payload.publicKey);
       state.voteRequests[index].in = false;
       state.numOfNewVoteRequest -= 1;
     },

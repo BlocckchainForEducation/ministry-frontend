@@ -66,7 +66,7 @@ export default function SignIn() {
 
   async function hdSubmit(e) {
     e.preventDefault();
-    let response = await fetch(`${process.env.REACT_APP_SERVER_URL}/acc/signin`, {
+    let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/acc/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: getToken() },
       body: JSON.stringify({ email: state.email, password: state.password }),
@@ -133,7 +133,9 @@ export default function SignIn() {
             helperText={errors?.password}
           />
           <FormControlLabel
-            control={<Checkbox checked={state.remember} onChange={(e) => setState({ ...state, remember: !state.remember })} color="primary" />}
+            control={
+              <Checkbox checked={state.remember} onChange={(e) => setState({ ...state, remember: !state.remember })} color="primary" />
+            }
             label="Nhớ đăng nhập"
           />
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit} onClick={hdSubmit}>

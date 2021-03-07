@@ -21,7 +21,7 @@ export default function RequestList(props) {
   useEffect(() => {
     if (numOfNewVoteRequest === 0) {
       const clockId = setInterval(async () => {
-        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/vote-requests?state=new`, { headers: { Authorization: getToken() } });
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/vote-requests?state=new`, { headers: { Authorization: getToken() } });
         if (res.ok) {
           const body = await res.json();
           if (body) {
@@ -36,11 +36,14 @@ export default function RequestList(props) {
   });
 
   async function fetchNewVoteRequests() {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/vote-requests?state=new`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/vote-requests?state=new`, {
       headers: { Authorization: getToken() },
     });
     if (!response.ok) {
-      enqueueSnackbar(JSON.stringify(await response.json()), { variant: "error", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
+      enqueueSnackbar(JSON.stringify(await response.json()), {
+        variant: "error",
+        anchorOrigin: { vertical: "bottom", horizontal: "center" },
+      });
     } else {
       const result = await response.json();
       dp(updateVoteRequestList(result));

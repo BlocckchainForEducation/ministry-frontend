@@ -16,7 +16,7 @@ export default function UniversityList(props) {
   }, []);
 
   async function fetchUniversity() {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/universities`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/universities`, {
       headers: { Authorization: getToken() },
     });
     if (!response.ok) {
