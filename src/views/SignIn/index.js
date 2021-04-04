@@ -93,7 +93,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h3">
-          Đăng nhập tài khoản Bộ Giáo Dục
+          Đăng nhập Bộ Giáo Dục
         </Typography>
         <form className={classes.form} noValidate>
           <TextField

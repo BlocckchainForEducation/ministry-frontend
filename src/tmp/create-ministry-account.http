@@ -8,7 +8,7 @@ content-type: application/json
 }
 
 
-# POST http://139.59.125.235:8000/acc/signup HTTP/1.1
+# POST https://139.59.125.235:8000/acc/signup HTTP/1.1
 # content-type: application/json
 
 # {
