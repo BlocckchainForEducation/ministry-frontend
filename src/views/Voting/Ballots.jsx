@@ -3,7 +3,8 @@ import axios from "axios";
 import { useSnackbar } from "notistack";
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ERR_TOP_CENTER } from "../../../utils/snackbar-utils";
+import { ERR_TOP_CENTER } from "../../utils/snackbar-utils";
+// import { ERR_TOP_CENTER } from "../../../utils/snackbar-utils";
 import Ballot from "./Ballot";
 import { setBallots } from "./redux";
 
@@ -18,7 +19,7 @@ export default function Ballots(props) {
   // make thing complicated just for remove warning on useEffect :v
   const fetchNewBallots = useCallback(async () => {
     try {
-      const response = await axios.get("/staff/ballots?state=new");
+      const response = await axios.get("/ballots?state=new");
       dp(setBallots(response.data));
     } catch (error) {
       console.error(error);

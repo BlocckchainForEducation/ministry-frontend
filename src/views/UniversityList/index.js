@@ -4,7 +4,6 @@ import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import View from "../../shared/utils/View";
-import { getToken } from "../../utils/mng-token";
 import { ERR_TOP_CENTER } from "../../utils/snackbar-utils";
 import { setFetchedUniversities } from "./redux";
 import UniversityTable from "./UniversityTable";

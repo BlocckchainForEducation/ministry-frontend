@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const voteHistorySlice = createSlice({
   name: "voteHistorySlice",
-  initialState: { fetching: true, voteHistory: [] },
+  initialState: { fetching: true, ballots: [] },
   reducers: {
     updateVoteHistory: (state, action) => {
       state.fetching = false;
-      state.voteHistory = action.payload;
+      state.ballots = action.payload;
     },
   },
 });

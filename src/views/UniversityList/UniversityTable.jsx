@@ -35,7 +35,7 @@ export default function UniversityTable({ universities }) {
                 <TableCell>
                   <AvatarGroup max={5}>
                     {uni.votes.map((voter) => (
-                      <Avatar>{voter.publicKey}</Avatar>
+                      <Avatar src={voter.imgSrc}></Avatar>
                     ))}
                   </AvatarGroup>
                 </TableCell>

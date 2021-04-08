@@ -1,6 +1,5 @@
-import { makeStyles, Typography } from "@material-ui/core";
-import { useSelector } from "react-redux";
-import Page from "src/shared/Page";
+import { Box, makeStyles } from "@material-ui/core";
+import Page from "../../shared/utils/Page";
 import Ballots from "./Ballots";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,19 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Voting(props) {
-  const cls = useStyles();
-  const registrationState = useSelector((state) => state.profileSlice.state);
-
   return (
     <Page title="Bỏ phiếu">
-      {registrationState === "accepted" ? (
+      <Box p={2}>
         <Ballots></Ballots>
-      ) : (
-        <div className={cls.flexContainer}>
-          <Typography variant="h3">Hiện tại bạn chưa thể thực hiện bỏ phiếu!</Typography>
-          <Typography variant="subtitle1">Sau khi tham gia thành công bạn sẽ có thể thực hiện bỏ phiếu.</Typography>
-        </div>
-      )}
+      </Box>
     </Page>
   );
 }

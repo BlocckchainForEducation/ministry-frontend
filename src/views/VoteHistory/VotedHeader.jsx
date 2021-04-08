@@ -29,7 +29,7 @@ export default function VotedHeader({ request }) {
         </Box>
         <Box>
           <Link href={`${process.env.REACT_APP_EXPLORER_URL}/#/transactions/${request.txid}`}>
-            <small>{`Txid: ${request.txid.slice(0, 30)}...`}</small>
+            {/* <small>{`Txid: ${request.txid.slice(0, 30)}...`}</small> */}
           </Link>
         </Box>
       </Box>

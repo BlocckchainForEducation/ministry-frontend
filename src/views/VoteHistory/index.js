@@ -1,16 +1,17 @@
 import { Box, Typography } from "@material-ui/core";
+import axios from "axios";
 import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import VoteBody from "../../shared/VoteBody";
 import View from "../../shared/utils/View";
+import BallotBody from "../../shared/BallotBody";
+import { ERR_TOP_CENTER } from "../../utils/snackbar-utils";
 import { updateVoteHistory } from "./redux";
 import VotedHeader from "./VotedHeader";
-import { getToken } from "../../utils/mng-token";
 
 export default function VoteHistory(props) {
   const loading = useSelector((state) => state.voteHistorySlice.fetching);
-  const voteHistory = useSelector((state) => state.voteHistorySlice.voteHistory);
+  const ballots = useSelector((state) => state.voteHistorySlice.ballots);
   const dp = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -19,26 +20,20 @@ export default function VoteHistory(props) {
   }, []);
 
   async function fetchVoteHistory() {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/vote-requests?state=old`, {
-      headers: { Authorization: getToken() },
-    });
-    if (!response.ok) {
-      enqueueSnackbar(JSON.stringify(await response.json()), {
-        variant: "error",
-        anchorOrigin: { vertical: "bottom", horizontal: "center" },
-      });
-    } else {
-      const fetchedVoteHistory = await response.json();
-      dp(updateVoteHistory(fetchedVoteHistory));
+    try {
+      const response = await axios.get("/ballots?state=old");
+      dp(updateVoteHistory(response.data));
+    } catch (error) {
+      enqueueSnackbar(JSON.stringify(error.response.data), ERR_TOP_CENTER);
     }
   }
 
   let content;
-  if (voteHistory.length > 0) {
-    content = voteHistory.map((vote, index) => (
+  if (ballots.length > 0) {
+    content = ballots.map((ballot, index) => (
       <Box mb={3} key={index}>
-        <VotedHeader request={vote}></VotedHeader>
-        <VoteBody request={vote}></VoteBody>
+        <VotedHeader request={ballot}></VotedHeader>
+        <BallotBody ballot={ballot}></BallotBody>
       </Box>
     ));
   } else {
