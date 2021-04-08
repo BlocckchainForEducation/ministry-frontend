@@ -1,18 +1,42 @@
-function setLocalRole(role) {
-  localStorage.setItem("role", role);
+import axios from "axios";
+
+let remember = true;
+
+function setRemember(_remember) {
+  remember = _remember;
 }
 
-function setSessionRole(role) {
-  sessionStorage.setItem("role", role);
+function getRemember() {
+  return remember;
 }
 
-function getRole() {
-  return sessionStorage.getItem("role") || localStorage.getItem("role");
+function setToken(token) {
+  if (remember) localStorage.setItem("token", "Bearer " + token);
+  else sessionStorage.setItem("token", "Bearer " + token);
 }
 
-function clearRole() {
-  sessionStorage.removeItem("role");
-  localStorage.removeItem("role");
+function setSessionToken(token) {
+  axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+  sessionStorage.setItem("token", "Bearer " + token);
 }
 
-export { setLocalRole, setSessionRole, getRole, clearRole };
+function setLocalToken(token) {
+  axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+  localStorage.setItem("token", "Bearer " + token);
+}
+
+function getToken() {
+  if (remember) return localStorage.getItem("token");
+  else return sessionStorage.getItem("token");
+}
+
+function clearToken() {
+  if (remember) {
+    axios.defaults.headers.common["Authorization"] = null;
+    localStorage.removeItem("token");
+  } else {
+    sessionStorage.removeItem("token");
+  }
+}
+
+export { setSessionToken, setLocalToken, getToken, clearToken, setRemember, getRemember, setToken };
