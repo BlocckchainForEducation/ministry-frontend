@@ -1,8 +1,11 @@
 import { Box } from "@material-ui/core";
+import axios from "axios";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import View from "../../shared/utils/View";
 import { getToken } from "../../utils/mng-token";
+import { ERR_TOP_CENTER } from "../../utils/snackbar-utils";
 import { setFetchedUniversities } from "./redux";
 import UniversityTable from "./UniversityTable";
 
@@ -10,19 +13,18 @@ export default function UniversityList(props) {
   const loading = useSelector((state) => state.universityListSlice.fetching);
   const universities = useSelector((state) => state.universityListSlice.universities);
   const dp = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     fetchUniversity();
   }, []);
 
   async function fetchUniversity() {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/universities`, {
-      headers: { Authorization: getToken() },
-    });
-    if (!response.ok) {
-      console.log(await response.json());
-    } else {
-      dp(setFetchedUniversities(await response.json()));
+    try {
+      const response = await axios.get("/universities");
+      dp(setFetchedUniversities(response.data));
+    } catch (error) {
+      enqueueSnackbar(JSON.stringify(error.response.data), ERR_TOP_CENTER);
     }
   }
 

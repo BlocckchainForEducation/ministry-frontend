@@ -16,7 +16,11 @@ const rootReducer = (state, action) => {
   return appReducer(state, action);
 };
 
-const appReducer = combineReducers({ votingSlice: votingReducer, universityListSlice: uniListReducer, voteHistorySlice: votedHistoryReducer });
+const appReducer = combineReducers({
+  votingSlice: votingReducer,
+  universityListSlice: uniListReducer,
+  voteHistorySlice: votedHistoryReducer,
+});
 
 export default configureStore({
   reducer: rootReducer,
