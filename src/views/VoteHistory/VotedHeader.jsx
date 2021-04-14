@@ -15,7 +15,7 @@ export default function VotedHeader({ request }) {
         <Box>
           <Grid container spacing={2} alignItems="center" justify="flex-end">
             <Grid item>
-              <small>Ngày: {request.date}</small>
+              <small>Ngày bỏ phiếu: {request.date}</small>
             </Grid>
             {/* <Grid item>{request.state === "accepted" ? <i>Đồng ý</i> : <i>Từ chối</i>}</Grid> */}
             <Grid item>
